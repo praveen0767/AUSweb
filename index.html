@@ -21,9 +21,9 @@
     <!-- EmailJS Configuration -->
     <script>
         // EmailJS configuration - Replace with your actual keys from EmailJS dashboard
-        const EMAILJS_SERVICE_ID = 'service_6sib2ae';  // Get from EmailJS
-        const EMAILJS_TEMPLATE_ID = 'template_21ntp38';  // Create template in EmailJS
-        const EMAILJS_PUBLIC_KEY = 'Er8oN0yusHZbDfA2w';  // Get from EmailJS
+        const EMAILJS_SERVICE_ID = 'service_6sib2ae';
+        const EMAILJS_TEMPLATE_ID = 'template_21ntp38';
+        const EMAILJS_PUBLIC_KEY = 'Er8oN0yusHZbDfA2w';
 
         // Initialize EmailJS
         emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -357,106 +357,6 @@
             color: white;
         }
 
-        .hero-gallery {
-            flex: 1;
-            max-width: 60%;
-            position: relative;
-        }
-
-        .gallery-container {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .gallery-slider {
-            display: flex;
-            width: 500%;
-            height: 100%;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-slide {
-            width: 20%;
-            height: 100%;
-            position: relative;
-        }
-
-        .gallery-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 1rem;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-slide:hover .gallery-caption {
-            transform: translateY(0);
-        }
-
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 2;
-            font-size: 1.2rem;
-            transition: background 0.3s ease;
-        }
-
-        .gallery-nav:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .gallery-prev {
-            left: 1rem;
-        }
-
-        .gallery-next {
-            right: 1rem;
-        }
-
-        .gallery-dots {
-            position: absolute;
-            bottom: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .gallery-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .gallery-dot.active {
-            background: white;
-        }
-
         .hero-badge {
             display: inline-block;
             background: rgba(37, 99, 235, 0.1);
@@ -546,56 +446,146 @@
 
         .chart-container {
             position: relative;
-            height: 300px;
-            margin-bottom: 2rem;
+            height: 250px;
+            margin-bottom: 1.5rem;
         }
 
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
+        /* Compact metrics grid */
+        .compact-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .data-table th,
-        .data-table td {
-            padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
+        .metric-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
 
-        .data-table th {
-            font-weight: 600;
-            background: var(--bg-secondary);
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .data-table tr:hover {
-            background: var(--bg-secondary);
+        .metric-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0.5rem 0;
         }
 
-        .pagination {
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        /* Quick actions */
+        .quick-actions {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1rem;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
         }
 
-        .pagination-controls {
+        /* Gallery Section */
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-slider {
+            display: flex;
+            width: 500%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-slide {
+            width: 20%;
+            height: 100%;
+            position: relative;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-slide:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2;
+            font-size: 1.2rem;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .gallery-prev {
+            left: 1rem;
+        }
+
+        .gallery-next {
+            right: 1rem;
+        }
+
+        .gallery-dots {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             gap: 0.5rem;
         }
 
-        .page-btn {
-            padding: 0.5rem 0.75rem;
-            border: 1px solid var(--border);
-            background: var(--bg);
-            border-radius: var(--radius);
+        .gallery-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
             cursor: pointer;
+            transition: background 0.3s ease;
         }
 
-        .page-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
+        .gallery-dot.active {
+            background: white;
         }
 
         /* Waveform Canvas */
@@ -960,6 +950,32 @@
             animation: pulse 2s infinite;
         }
 
+        /* Advanced Features */
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .advanced-feature {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .advanced-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .advanced-feature:hover::before {
+            left: 100%;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
@@ -1018,6 +1034,14 @@
                 left: -10px;
                 right: auto;
             }
+
+            .gallery-container {
+                height: 300px;
+            }
+
+            .compact-metrics {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
         }
 
         /* High Contrast Mode */
@@ -1053,11 +1077,11 @@
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#product" class="nav-link">Product</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
                 <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
                 <li><a href="#technology" class="nav-link">Technology</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
                 <li><a href="#pilot" class="nav-link">Pilot Study</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#contact" class="nav-link">Contact Us</a></li>
             </ul>
             
             <div class="nav-actions">
@@ -1083,65 +1107,6 @@
                     <a href="#product" class="btn btn-primary">Explore Product</a>
                     <a href="#dashboard" class="btn btn-secondary">View Demo Dashboard</a>
                     <a href="#contact" class="btn btn-accent">Schedule Demo</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="section">
-        <div class="container">
-            <h2 class="text-center mb-3">AUSCSYNC Gallery</h2>
-            <p class="text-center text-light mb-3">Showcasing our journey and innovations in AI-powered cardiac diagnostics</p>
-
-            <div class="gallery-container">
-                <div class="gallery-slider" id="gallerySlider">
-                    <div class="gallery-slide">
-                        <img src="image.png" alt="AUSCSYNC Device Prototype" class="gallery-image">
-                        <div class="gallery-caption">
-                            <h4>Device Prototype</h4>
-                            <p>Early prototype of our AI-powered stethoscope with edge computing capabilities</p>
-                        </div>
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://via.placeholder.com/800x500/2563eb/ffffff?text=AUSCSYNC+Team" alt="AUSCSYNC Team" class="gallery-image">
-                        <div class="gallery-caption">
-                            <h4>Our Team</h4>
-                            <p>Dedicated engineers and healthcare professionals working together</p>
-                        </div>
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://via.placeholder.com/800x500/10b981/ffffff?text=Rural+Healthcare+Demo" alt="Rural Healthcare Demo" class="gallery-image">
-                        <div class="gallery-caption">
-                            <h4>Rural Healthcare Demo</h4>
-                            <p>Field testing in rural primary health centers across India</p>
-                        </div>
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://via.placeholder.com/800x500/f59e0b/ffffff?text=AI+Processing+Unit" alt="AI Processing Unit" class="gallery-image">
-                        <div class="gallery-caption">
-                            <h4>AI Processing Unit</h4>
-                            <p>Advanced edge AI chip enabling real-time cardiac analysis</p>
-                        </div>
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://via.placeholder.com/800x500/ef4444/ffffff?text=Pilot+Study+Launch" alt="Pilot Study Launch" class="gallery-image">
-                        <div class="gallery-caption">
-                            <h4>Pilot Study Launch</h4>
-                            <p>Launching comprehensive pilot studies in three healthcare settings</p>
-                        </div>
-                    </div>
-                </div>
-
-                <button class="gallery-nav gallery-prev" id="galleryPrev" aria-label="Previous image">❮</button>
-                <button class="gallery-nav gallery-next" id="galleryNext" aria-label="Next image">❯</button>
-
-                <div class="gallery-dots" id="galleryDots">
-                    <span class="gallery-dot active" data-slide="0"></span>
-                    <span class="gallery-dot" data-slide="1"></span>
-                    <span class="gallery-dot" data-slide="2"></span>
-                    <span class="gallery-dot" data-slide="3"></span>
-                    <span class="gallery-dot" data-slide="4"></span>
                 </div>
             </div>
         </div>
@@ -1231,6 +1196,65 @@
         </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="text-center mb-3">AUSCSYNC Gallery</h2>
+            <p class="text-center text-light mb-3">Showcasing our journey and innovations in AI-powered cardiac diagnostics</p>
+
+            <div class="gallery-container">
+                <div class="gallery-slider" id="gallerySlider">
+                    <div class="gallery-slide">
+                        <img src="image.png" alt="AUSCSYNC Device Prototype" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h4>Device Prototype</h4>
+                            <p>Early prototype of our AI-powered stethoscope with edge computing capabilities</p>
+                        </div>
+                    </div>
+    <div class="gallery-slide">
+        <img src="ortm.jpg" alt="AUSCSYNC Team" class="gallery-image team-photo">
+        <div class="gallery-caption">
+            <h4>Our Team</h4>
+            <p>Dedicated engineers and healthcare professionals working together</p>
+        </div>
+    </div>
+    <div class="gallery-slide">
+        <img src="decv.jpg" alt="AI Processing Unit" class="gallery-image">
+        <div class="gallery-caption">
+            <h4>AI Processing Unit</h4>
+            <p>Advanced edge AI chip enabling real-time cardiac analysis</p>
+        </div>
+    </div>
+                    <div class="gallery-slide">
+                        <img src="pyl.jpg" alt="Pilot Launch Image" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h4>Pilot Study Launch</h4>
+                            <p>Launching comprehensive pilot studies in three healthcare settings</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="image.png" alt="AUSCSYNC Future Vision" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h4>Future Vision</h4>
+                            <p>Advancing cardiac diagnostics through continuous innovation and AI technology</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="gallery-nav gallery-prev" id="galleryPrev" aria-label="Previous image">❮</button>
+                <button class="gallery-nav gallery-next" id="galleryNext" aria-label="Next image">❯</button>
+
+                <div class="gallery-dots" id="galleryDots">
+                    <span class="gallery-dot active" data-slide="0"></span>
+                    <span class="gallery-dot" data-slide="1"></span>
+                    <span class="gallery-dot" data-slide="2"></span>
+                    <span class="gallery-dot" data-slide="3"></span>
+                    <span class="gallery-dot" data-slide="4"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Interactive Dashboard -->
     <section id="dashboard" class="section">
         <div class="container">
@@ -1279,26 +1303,34 @@
                     </div>
                 </div>
                 
-                <div class="grid grid-3 mb-3">
-                    <div class="card text-center">
+                <!-- Compact Metrics Grid -->
+                <div class="compact-metrics">
+                    <div class="metric-card">
                         <h4>Total Recordings</h4>
-                        <h2 id="totalRecordings">1,247</h2>
-                        <p class="text-light">Across all sites</p>
+                        <div class="metric-value" id="totalRecordings">1,247</div>
+                        <div class="metric-label">Across all sites</div>
                     </div>
                     
-                    <div class="card text-center">
+                    <div class="metric-card">
                         <h4>Abnormal Detections</h4>
-                        <h2 id="abnormalDetections">187</h2>
-                        <p class="text-light">15% of total</p>
+                        <div class="metric-value" id="abnormalDetections">187</div>
+                        <div class="metric-label">15% of total</div>
                     </div>
                     
-                    <div class="card text-center">
+                    <div class="metric-card">
                         <h4>Model Accuracy</h4>
-                        <h2 id="modelAccuracy">94.2%</h2>
-                        <p class="text-light">F1 Score</p>
+                        <div class="metric-value" id="modelAccuracy">94.2%</div>
+                        <div class="metric-label">F1 Score</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <h4>Avg. Processing Time</h4>
+                        <div class="metric-value">2.3s</div>
+                        <div class="metric-label">Per recording</div>
                     </div>
                 </div>
                 
+                <!-- Charts -->
                 <div class="chart-container">
                     <canvas id="diagnosisChart"></canvas>
                 </div>
@@ -1307,9 +1339,12 @@
                     <canvas id="trendChart"></canvas>
                 </div>
                 
-
-                
-
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button id="exportCSV" class="btn btn-secondary">Export Data</button>
+                    <button id="generateReport" class="btn btn-primary">Generate Report</button>
+                    <button id="refreshData" class="btn btn-accent">Refresh Data</button>
+                </div>
             </div>
         </div>
     </section>
@@ -1706,7 +1741,7 @@
                     <h4 class="footer-heading">Company</h4>
                     <ul class="footer-links">
                         <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#contact">@2025</a></li>
                         <li><a href="#">Careers</a></li>
                         <li><a href="#">Blog</a></li>
                     </ul>
@@ -1724,7 +1759,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 AUSCSYNC. All rights reserved. | Revolutionizing Cardiac Care with AI Technology</p>
+                <p>@ 2025 AUSCSYNC. All rights reserved. | Revolutionizing Cardiac Care with AI Technology</p>
             </div>
         </div>
     </footer>
@@ -1735,25 +1770,11 @@
         <button id="toastClose">&times;</button>
     </div>
 
-    <!-- Modal for Patient Details -->
-    <div id="patientModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <h3>Patient Record Details</h3>
-            <div id="modalContent">
-                <!-- Content will be populated by JavaScript -->
-            </div>
-        </div>
-    </div>
-
     <!-- JavaScript -->
     <script>
         // Global Variables
         let currentTheme = 'light';
         let currentLanguage = 'en';
-        let currentPage = 1;
-        const recordsPerPage = 10;
-        let patientData = [];
         let isPlaying = false;
         let animationId = null;
         let currentSlide = 0;
@@ -1769,17 +1790,12 @@
         const header = document.getElementById('header');
         const probabilitySlider = document.getElementById('probabilitySlider');
         const probabilityValue = document.getElementById('probabilityValue');
-        const patientTableBody = document.getElementById('patientTableBody');
-        const prevPage = document.getElementById('prevPage');
-        const nextPage = document.getElementById('nextPage');
-        const pageStart = document.getElementById('pageStart');
-        const pageEnd = document.getElementById('pageEnd');
-        const totalRecords = document.getElementById('totalRecords');
         const totalRecordings = document.getElementById('totalRecordings');
         const abnormalDetections = document.getElementById('abnormalDetections');
         const modelAccuracy = document.getElementById('modelAccuracy');
         const exportCSV = document.getElementById('exportCSV');
         const generateReport = document.getElementById('generateReport');
+        const refreshData = document.getElementById('refreshData');
         const contactForm = document.getElementById('contactForm');
         const submitButton = document.getElementById('submitButton');
         const submitText = document.getElementById('submitText');
@@ -1787,9 +1803,6 @@
         const toast = document.getElementById('toast');
         const toastMessage = document.getElementById('toastMessage');
         const toastClose = document.getElementById('toastClose');
-        const patientModal = document.getElementById('patientModal');
-        const modalClose = document.getElementById('modalClose');
-        const modalContent = document.getElementById('modalContent');
         const waveformCanvas = document.getElementById('waveformCanvas');
         const playPauseBtn = document.getElementById('playPauseBtn');
         const zoomInBtn = document.getElementById('zoomInBtn');
@@ -1801,6 +1814,10 @@
         const counter3 = document.getElementById('counter3');
         const progressFill = document.getElementById('progressFill');
         const progressPercentage = document.getElementById('progressPercentage');
+        const gallerySlider = document.getElementById('gallerySlider');
+        const galleryPrev = document.getElementById('galleryPrev');
+        const galleryNext = document.getElementById('galleryNext');
+        const galleryDots = document.getElementById('galleryDots');
 
         // Initialize the application
         function init() {
@@ -1809,13 +1826,11 @@
             themeToggle.addEventListener('click', toggleTheme);
             languageToggle.addEventListener('click', toggleLanguage);
             probabilitySlider.addEventListener('input', updateProbabilityValue);
-            prevPage.addEventListener('click', goToPrevPage);
-            nextPage.addEventListener('click', goToNextPage);
             exportCSV.addEventListener('click', exportToCSV);
             generateReport.addEventListener('click', generatePDFReport);
+            refreshData.addEventListener('click', refreshDashboard);
             contactForm.addEventListener('submit', handleContactSubmit);
             toastClose.addEventListener('click', hideToast);
-            modalClose.addEventListener('click', closeModal);
             playPauseBtn.addEventListener('click', togglePlayPause);
             zoomInBtn.addEventListener('click', zoomIn);
             zoomOutBtn.addEventListener('click', zoomOut);
@@ -1832,25 +1847,22 @@
                 });
             });
 
-            // Close modal when clicking outside
-            window.addEventListener('click', (e) => {
-                if (e.target === patientModal) {
-                    closeModal();
-                }
+            // Keyboard shortcuts
+            document.addEventListener('keydown', handleKeyboardShortcuts);
+
+            // Gallery navigation
+            galleryPrev.addEventListener('click', prevSlide);
+            galleryNext.addEventListener('click', nextSlide);
+            document.querySelectorAll('.gallery-dot').forEach((dot, index) => {
+                dot.addEventListener('click', () => showSlide(index));
             });
 
-        // Keyboard shortcuts
-        document.addEventListener('keydown', handleKeyboardShortcuts);
-
-        // Gallery navigation
-        galleryPrev.addEventListener('click', prevSlide);
-        galleryNext.addEventListener('click', nextSlide);
-        document.querySelectorAll('.gallery-dot').forEach((dot, index) => {
-            dot.addEventListener('click', () => showSlide(index));
-        });
-
-        // Generate sample data
-            generateSampleData();
+            // Auto-advance gallery
+            setInterval(() => {
+                if (document.visibilityState === 'visible') {
+                    nextSlide();
+                }
+            }, 5000);
 
             // Initialize charts
             initCharts();
@@ -1902,6 +1914,27 @@
             }
         }
 
+        // Gallery Navigation
+        function showSlide(index) {
+            currentSlide = index;
+            gallerySlider.style.transform = `translateX(-${index * 20}%)`;
+            
+            // Update dots
+            document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
         // Update Probability Value Display
         function updateProbabilityValue() {
             probabilityValue.textContent = `${probabilitySlider.value}%`;
@@ -1944,10 +1977,10 @@
 
         // Initialize Counters
         function initCounters() {
-            animateCounter(counter1, 0, 54000000, 2000);
+            counter1.textContent = '500,000';
             animateCounter(counter2, 0, 2000, 1500);
             animateCounter(counter3, 0, 5000, 1500, '₹');
-            
+
             // Animate progress bar
             setTimeout(() => {
                 progressFill.style.width = '42%';
@@ -1972,225 +2005,46 @@
             }, stepTime);
         }
 
-        // Generate Sample Patient Data
-        function generateSampleData() {
-            const locations = ['Rural PHC', 'District Hospital', 'Mobile Camp'];
-            const diagnoses = ['Normal', 'Murmur', 'Arrhythmia', 'Extra Heart Sound'];
-            
-            for (let i = 1; i <= 50; i++) {
-                const randomLocation = locations[Math.floor(Math.random() * locations.length)];
-                const randomDiagnosis = diagnoses[Math.floor(Math.random() * diagnoses.length)];
-                const randomAge = Math.floor(Math.random() * 80) + 10;
-                const randomProbability = Math.floor(Math.random() * 30) + 70; // 70-100%
-                const randomDate = new Date();
-                randomDate.setDate(randomDate.getDate() - Math.floor(Math.random() * 30));
-                
-                patientData.push({
-                    id: `PID${i.toString().padStart(4, '0')}`,
-                    age: randomAge,
-                    location: randomLocation,
-                    diagnosis: randomDiagnosis,
-                    probability: randomProbability,
-                    date: randomDate.toISOString().split('T')[0],
-                    details: {
-                        heartRate: Math.floor(Math.random() * 40) + 60, // 60-100 bpm
-                        recordingDuration: (Math.random() * 10 + 20).toFixed(2), // 20-30 seconds
-                        signalQuality: Math.floor(Math.random() * 30) + 70, // 70-100%
-                        notes: `Sample recording from ${randomLocation}. ${randomDiagnosis.toLowerCase()} detected with ${randomProbability}% confidence.`
-                    }
-                });
-            }
-            
-            // Update patient table
-            updatePatientTable();
-        }
-
-        // Update Patient Table
-        function updatePatientTable() {
-            const startIndex = (currentPage - 1) * recordsPerPage;
-            const endIndex = startIndex + recordsPerPage;
-            const pageData = patientData.slice(startIndex, endIndex);
-            
-            patientTableBody.innerHTML = '';
-            
-            pageData.forEach(patient => {
-                const row = document.createElement('tr');
-                
-                // Determine row class based on diagnosis
-                let rowClass = '';
-                if (patient.diagnosis !== 'Normal') {
-                    rowClass = 'abnormal-row';
-                }
-                
-                row.innerHTML = `
-                    <td>${patient.id}</td>
-                    <td>${patient.age}</td>
-                    <td>${patient.location}</td>
-                    <td>${patient.diagnosis}</td>
-                    <td>${patient.probability}%</td>
-                    <td>${patient.date}</td>
-                    <td>
-                        <button class="btn btn-secondary view-details" data-id="${patient.id}">View</button>
-                    </td>
-                `;
-                
-                if (rowClass) {
-                    row.classList.add(rowClass);
-                }
-                
-                patientTableBody.appendChild(row);
-            });
-            
-            // Add event listeners to view buttons
-            document.querySelectorAll('.view-details').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const patientId = e.target.getAttribute('data-id');
-                    showPatientDetails(patientId);
-                });
-            });
-            
-            // Update pagination info
-            pageStart.textContent = startIndex + 1;
-            pageEnd.textContent = Math.min(endIndex, patientData.length);
-            totalRecords.textContent = patientData.length;
-            
-            // Update button states
-            prevPage.disabled = currentPage === 1;
-            nextPage.disabled = endIndex >= patientData.length;
-        }
-
-        // Go to Previous Page
-        function goToPrevPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                updatePatientTable();
-            }
-        }
-
-        // Go to Next Page
-        function goToNextPage() {
-            if (currentPage * recordsPerPage < patientData.length) {
-                currentPage++;
-                updatePatientTable();
-            }
-        }
-
-        // Show Patient Details in Modal
-        function showPatientDetails(patientId) {
-            const patient = patientData.find(p => p.id === patientId);
-            
-            if (patient) {
-                modalContent.innerHTML = `
-                    <div class="grid grid-2 mb-2">
-                        <div>
-                            <h5>Patient ID</h5>
-                            <p>${patient.id}</p>
-                        </div>
-                        <div>
-                            <h5>Age</h5>
-                            <p>${patient.age}</p>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-2 mb-2">
-                        <div>
-                            <h5>Location</h5>
-                            <p>${patient.location}</p>
-                        </div>
-                        <div>
-                            <h5>Date</h5>
-                            <p>${patient.date}</p>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-2">
-                        <h5>Diagnosis</h5>
-                        <p>${patient.diagnosis} (${patient.probability}% confidence)</p>
-                    </div>
-                    
-                    <div class="grid grid-3 mb-2">
-                        <div>
-                            <h5>Heart Rate</h5>
-                            <p>${patient.details.heartRate} BPM</p>
-                        </div>
-                        <div>
-                            <h5>Duration</h5>
-                            <p>${patient.details.recordingDuration}s</p>
-                        </div>
-                        <div>
-                            <h5>Signal Quality</h5>
-                            <p>${patient.details.signalQuality}%</p>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-2">
-                        <h5>Clinical Notes</h5>
-                        <p>${patient.details.notes}</p>
-                    </div>
-                    
-                    <div class="text-center">
-                        <button class="btn btn-primary" onclick="generatePatientReport('${patient.id}')">Generate Report</button>
-                    </div>
-                `;
-                
-                patientModal.style.display = 'flex';
-            }
-        }
-
-        // Close Modal
-        function closeModal() {
-            patientModal.style.display = 'none';
-        }
-
         // Update Dashboard Metrics
         function updateDashboard() {
             const threshold = parseInt(probabilitySlider.value);
             
-            // Filter data based on threshold
-            const filteredData = patientData.filter(patient => patient.probability >= threshold);
-            const abnormalData = filteredData.filter(patient => patient.diagnosis !== 'Normal');
+            // Mock data calculations
+            const total = 1247;
+            const abnormal = Math.floor(total * (threshold / 100) * 0.15);
+            const accuracy = 90 + Math.random() * 8; // 90-98%
             
             // Update metrics
-            totalRecordings.textContent = filteredData.length.toLocaleString();
-            abnormalDetections.textContent = abnormalData.length.toLocaleString();
-            
-            // Calculate accuracy (mock)
-            const accuracy = 90 + Math.random() * 8; // 90-98%
+            totalRecordings.textContent = total.toLocaleString();
+            abnormalDetections.textContent = abnormal.toLocaleString();
             modelAccuracy.textContent = accuracy.toFixed(1) + '%';
+        }
+
+        // Refresh Dashboard
+        function refreshDashboard() {
+            showToast('Dashboard data refreshed', 'success');
+            updateDashboard();
         }
 
         // Export to CSV
         function exportToCSV() {
-            const headers = ['Patient ID', 'Age', 'Location', 'Diagnosis', 'Probability', 'Date'];
-            const csvContent = [
-                headers.join(','),
-                ...patientData.map(patient => [
-                    patient.id,
-                    patient.age,
-                    patient.location,
-                    patient.diagnosis,
-                    patient.probability,
-                    patient.date
-                ].join(','))
-            ].join('\n');
+            // In a real implementation, this would export actual data
+            showToast('CSV export initiated', 'success');
             
-            const blob = new Blob([csvContent], { type: 'text/csv' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'auscsync_patient_data.csv';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            showToast('CSV exported successfully', 'success');
+            setTimeout(() => {
+                showToast('CSV exported successfully', 'success');
+                
+                // Simulate download
+                const a = document.createElement('a');
+                a.href = '#';
+                a.download = 'auscsync_dashboard_data.csv';
+                a.click();
+            }, 1000);
         }
 
         // Generate PDF Report
         function generatePDFReport() {
             // In a real implementation, this would use jsPDF
-            // For now, we'll simulate the process
             showToast('PDF report generation started', 'success');
             
             setTimeout(() => {
@@ -2199,26 +2053,9 @@
                 // Simulate download
                 const a = document.createElement('a');
                 a.href = '#';
-                a.download = 'auscsync_clinical_report.pdf';
+                a.download = 'auscsync_dashboard_report.pdf';
                 a.click();
             }, 2000);
-        }
-
-        // Generate Patient Report
-        function generatePatientReport(patientId) {
-            showToast(`Generating report for ${patientId}`, 'success');
-            
-            setTimeout(() => {
-                showToast(`Report for ${patientId} generated successfully`, 'success');
-                
-                // Simulate download
-                const a = document.createElement('a');
-                a.href = '#';
-                a.download = `auscsync_report_${patientId}.pdf`;
-                a.click();
-                
-                closeModal();
-            }, 1500);
         }
 
         // Handle Contact Form Submission with Email Integration
@@ -2609,8 +2446,15 @@
                     toggleTheme();
                     break;
                 case 'Escape':
-                    closeModal();
                     hideToast();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    prevSlide();
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    nextSlide();
                     break;
             }
         }
