@@ -1,16 +1,14 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "includeFiles": [
-    "image.png"
+    { "src": "index.html", "use": "@vercel/static" } 
   ],
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
+    {
+      "src": "/(.*\\.(png|jpg|jpeg|gif|svg|css|js|ico|woff|woff2|ttf|eot))",
+      "dest": "/$1"
+    },
+    { "src": "/(.*)", "dest": "/index.html" } 
   ]
 }
