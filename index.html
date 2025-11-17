@@ -1,0 +1,2492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUSCSYNC - AI-Powered Stethoscope for Cardiovascular Diagnostics</title>
+    <meta name="description" content="AUSCSYNC - AI-powered stethoscope for precise cardiovascular diagnostics in rural and primary healthcare settings">
+    <meta name="keywords" content="AI stethoscope, cardiovascular diagnostics, rural healthcare, telemedicine, edge AI">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="AUSCSYNC - AI-Powered Stethoscope">
+    <meta property="og:description" content="Revolutionizing cardiovascular diagnostics with AI-powered stethoscope technology">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon placeholder -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- EmailJS Configuration -->
+    <script>
+        // EmailJS configuration - Replace with your actual keys from EmailJS dashboard
+        const EMAILJS_SERVICE_ID = 'service_6sib2ae';  // Get from EmailJS
+        const EMAILJS_TEMPLATE_ID = 'template_21ntp38';  // Create template in EmailJS
+        const EMAILJS_PUBLIC_KEY = 'Er8oN0yusHZbDfA2w';  // Get from EmailJS
+
+        // Initialize EmailJS
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+    </script>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AUSCSYNC",
+      "description": "AI-Powered Stethoscope for Precise Cardiovascular Diagnostics",
+      "url": "https://auscsync.com",
+      "logo": "https://auscsync.com/logo.png",
+      "sameAs": [],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "contact@auscsync.com",
+        "contactType": "customer service"
+      }
+    }
+    </script>
+    
+    <style>
+        /* CSS Variables for Theming */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --text-secondary: #6b7280;
+            --bg: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-dark: #111827;
+            --border: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --primary-light: #60a5fa;
+            --text: #f9fafb;
+            --text-light: #d1d5db;
+            --text-secondary: #d1d5db;
+            --bg: #111827;
+            --bg-secondary: #1f2937;
+            --bg-dark: #030712;
+            --border: #374151;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 2rem; }
+        h4 { font-size: 1.5rem; }
+        h5 { font-size: 1.25rem; }
+        h6 { font-size: 1rem; }
+
+        p { margin-bottom: 1rem; }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Layout Components */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-dark {
+            background-color: var(--bg-secondary);
+        }
+
+        .section-accent {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background-color: #eab308;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Grid System */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+
+        .logo-icon {
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--text);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%),
+                        url('./image.png') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%233b82f6' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* Dashboard Styles */
+        .dashboard {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .dashboard-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        select, input, textarea {
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 0.875rem;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 2rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table th {
+            font-weight: 600;
+            background: var(--bg-secondary);
+        }
+
+        .data-table tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .pagination-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .page-btn {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            border-radius: var(--radius);
+            cursor: pointer;
+        }
+
+        .page-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Waveform Canvas */
+        .waveform-container {
+            background: var(--bg-dark);
+            border-radius: var(--radius);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        #waveformCanvas {
+            width: 100%;
+            height: 200px;
+            background: #000;
+            border-radius: 4px;
+        }
+
+        .waveform-controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Toggle Switches */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border);
+            transition: var(--transition);
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: var(--transition);
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: var(--primary);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--bg);
+            color: var(--text);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 3000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-success {
+            border-left: 4px solid var(--secondary);
+        }
+
+        .toast-error {
+            border-left: 4px solid #ef4444;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-heading {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        /* Counter Animation */
+        .counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .counter-container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .counter-label {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* Progress Bars */
+        .progress-container {
+            margin: 1.5rem 0;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background: var(--bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            color: var(--text);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background: var(--bg);
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            box-shadow: 2px -2px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: -10px;
+            background: var(--bg);
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Utility Classes */
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mb-3 { margin-bottom: 3rem; }
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mt-3 { margin-top: 3rem; }
+        .py-1 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-2 { padding-top: 2rem; padding-bottom: 2rem; }
+        .py-3 { padding-top: 3rem; padding-bottom: 3rem; }
+
+        .hidden { display: none; }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background: var(--bg);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .dashboard-controls {
+                width: 100%;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+                right: auto;
+            }
+        }
+
+        /* High Contrast Mode */
+        .high-contrast {
+            --primary: #0000ff;
+            --primary-dark: #0000cc;
+            --primary-light: #3333ff;
+            --secondary: #008000;
+            --accent: #ffa500;
+            --text: #000000;
+            --text-light: #333333;
+            --bg: #ffffff;
+            --bg-secondary: #f0f0f0;
+            --bg-dark: #000000;
+            --border: #000000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">❤️</span>
+                AUSCSYNC
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                ☰
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#product" class="nav-link">Product</a></li>
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="#technology" class="nav-link">Technology</a></li>
+                <li><a href="#pilot" class="nav-link">Pilot Study</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="themeToggle" class="btn btn-secondary" aria-label="Toggle dark mode">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                <button id="languageToggle" class="btn btn-secondary" aria-label="Toggle language">
+                    <span id="languageIcon">🌐</span> EN
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">AI-Powered Cardiovascular Diagnostics</span>
+                <h1>Revolutionizing Heart Health with Intelligent Stethoscope Technology</h1>
+                <p class="text-lg">AUSCSYNC delivers precise, real-time cardiac diagnostics through advanced AI, making early detection accessible in rural and primary healthcare settings across India.</p>
+                
+                <div class="hero-actions">
+                    <a href="#product" class="btn btn-primary">Explore Product</a>
+                    <a href="#dashboard" class="btn btn-secondary">View Demo Dashboard</a>
+                    <a href="#contact" class="btn btn-accent">Schedule Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statement Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="text-center mb-3">The Cardiovascular Crisis in India</h2>
+            
+            <div class="grid grid-2">
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h3>The Problem</h3>
+                    </div>
+                    <p>Cardiovascular diseases cause over <strong>25% of deaths in India</strong>, with early diagnosis severely lacking in rural and primary care settings.</p>
+                    <ul>
+                        <li>Traditional stethoscopes depend heavily on clinician expertise, leading to subjective and inconsistent results</li>
+                        <li>Rural clinics lack affordable, smart diagnostic tools, causing delayed detection and treatment</li>
+                        <li>Patients face late diagnosis while health workers need reliable, easy-to-use devices</li>
+                        <li>Limited access to specialized cardiac care in remote areas</li>
+                    </ul>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h3>Our Solution</h3>
+                    </div>
+                    <p>AUSCSYNC is an <strong>AI-powered stethoscope</strong> that analyzes heart sounds in real-time for early cardiac diagnosis.</p>
+                    <ul>
+                        <li>Combines advanced sensors, edge AI, and mobile integration for portability and accessibility</li>
+                        <li>Multilingual user interface designed specifically for rural healthcare workers</li>
+                        <li>Affordable pricing model to ensure widespread adoption</li>
+                        <li>Real-time diagnostic feedback to support clinical decision making</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center mt-3">
+                <a href="#product" class="btn btn-primary">Learn More About Our Solution</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Features -->
+    <section id="product" class="section section-dark">
+        <div class="container">
+            <h2 class="text-center mb-3">AUSCSYNC Product Features</h2>
+            
+            <div class="features-grid">
+                <div class="card fade-in">
+                    <div class="feature-icon">🔍</div>
+                    <h4>Real-time Analysis</h4>
+                    <p>Advanced AI algorithms analyze heart sounds instantly, providing immediate diagnostic insights to healthcare providers.</p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="feature-icon">📱</div>
+                    <h4>Mobile Integration</h4>
+                    <p>Seamlessly connects with smartphones and tablets, enabling telemedicine consultations and remote diagnostics.</p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="feature-icon">💡</div>
+                    <h4>Edge AI Processing</h4>
+                    <p>On-device AI processing ensures data privacy and functionality even in low-connectivity environments.</p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="feature-icon">🌐</div>
+                    <h4>Multilingual Interface</h4>
+                    <p>Supports multiple Indian languages to ensure accessibility for healthcare workers across diverse regions.</p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="feature-icon">💰</div>
+                    <h4>Affordable Design</h4>
+                    <p>Target manufacturing cost of ₹5000 makes advanced cardiac diagnostics accessible to rural clinics.</p>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Portable & Durable</h4>
+                    <p>Rugged design built for challenging environments with long battery life for extended use in field settings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Dashboard -->
+    <section id="dashboard" class="section">
+        <div class="container">
+            <h2 class="text-center mb-2">Interactive Diagnostic Dashboard</h2>
+            <p class="text-center text-light mb-3">Explore simulated cardiac diagnostic data and AI analysis results</p>
+            
+            <div class="dashboard">
+                <div class="dashboard-header">
+                    <h3>Cardiac Auscultation Analysis</h3>
+                    <div class="dashboard-controls">
+                        <div class="control-group">
+                            <label class="control-label">Site Filter</label>
+                            <select id="siteFilter">
+                                <option value="all">All Sites</option>
+                                <option value="rural">Rural PHC</option>
+                                <option value="district">District Hospital</option>
+                                <option value="mobile">Mobile Camp</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Age Range</label>
+                            <select id="ageFilter">
+                                <option value="all">All Ages</option>
+                                <option value="child">0-18</option>
+                                <option value="adult">19-60</option>
+                                <option value="senior">60+</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Date Range</label>
+                            <select id="dateFilter">
+                                <option value="week">Last Week</option>
+                                <option value="month">Last Month</option>
+                                <option value="quarter">Last Quarter</option>
+                                <option value="year">Last Year</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label">Probability Threshold</label>
+                            <input type="range" id="probabilitySlider" min="0" max="100" value="70">
+                            <span id="probabilityValue">70%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-3 mb-3">
+                    <div class="card text-center">
+                        <h4>Total Recordings</h4>
+                        <h2 id="totalRecordings">1,247</h2>
+                        <p class="text-light">Across all sites</p>
+                    </div>
+                    
+                    <div class="card text-center">
+                        <h4>Abnormal Detections</h4>
+                        <h2 id="abnormalDetections">187</h2>
+                        <p class="text-light">15% of total</p>
+                    </div>
+                    
+                    <div class="card text-center">
+                        <h4>Model Accuracy</h4>
+                        <h2 id="modelAccuracy">94.2%</h2>
+                        <p class="text-light">F1 Score</p>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="diagnosisChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="trendChart"></canvas>
+                </div>
+                
+                <h4>Recent Patient Records</h4>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Patient ID</th>
+                                <th>Age</th>
+                                <th>Location</th>
+                                <th>Diagnosis</th>
+                                <th>Probability</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patientTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <div>Showing <span id="pageStart">1</span>-<span id="pageEnd">10</span> of <span id="totalRecords">50</span> records</div>
+                    <div class="pagination-controls">
+                        <button class="page-btn" id="prevPage">Previous</button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn">4</button>
+                        <button class="page-btn">5</button>
+                        <button class="page-btn" id="nextPage">Next</button>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-3">
+                    <button id="exportCSV" class="btn btn-secondary">Export CSV</button>
+                    <button id="generateReport" class="btn btn-primary">Generate Report</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waveform Visualization -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="text-center mb-3">Heart Sound Visualization</h2>
+            
+            <div class="waveform-container">
+                <canvas id="waveformCanvas"></canvas>
+                <div class="waveform-controls">
+                    <button id="playPauseBtn" class="btn btn-primary">▶ Play</button>
+                    <button id="zoomInBtn" class="btn btn-secondary">Zoom In</button>
+                    <button id="zoomOutBtn" class="btn btn-secondary">Zoom Out</button>
+                    <button id="annotateBtn" class="btn btn-accent">Annotate</button>
+                    <div class="control-group">
+                        <label class="control-label">Gain</label>
+                        <input type="range" id="gainSlider" min="0" max="100" value="50">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-2 mt-3">
+                <div class="card">
+                    <h4>Normal Heart Sound</h4>
+                    <p>Classic "lub-dub" pattern with clear S1 and S2 sounds, regular rhythm, and no extra sounds or murmurs.</p>
+                    <button class="btn btn-secondary" onclick="loadSample('normal')">Load Sample</button>
+                </div>
+                
+                <div class="card">
+                    <h4>Abnormal Heart Sound</h4>
+                    <p>Presence of systolic murmur indicating possible valve disorder or other cardiac abnormality.</p>
+                    <button class="btn btn-secondary" onclick="loadSample('abnormal')">Load Sample</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section id="technology" class="section">
+        <div class="container">
+            <h2 class="text-center mb-3">Technology Architecture</h2>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>Hardware Components</h4>
+                    <ul>
+                        <li>High-sensitivity acoustic sensors</li>
+                        <li>Low-noise amplifier circuitry</li>
+                        <li>ARM-based edge processor</li>
+                        <li>Bluetooth 5.2 connectivity</li>
+                        <li>Rechargeable battery (8+ hours)</li>
+                        <li>Rugged, medical-grade enclosure</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Software Stack</h4>
+                    <ul>
+                        <li><strong>Frontend:</strong> React JS, Next JS, Tailwind CSS, TypeScript</li>
+                        <li><strong>Backend:</strong> Next JS, MongoDB, NodeMailer, Python</li>
+                        <li><strong>AI/ML:</strong> TensorFlow Lite, Custom CNN models</li>
+                        <li><strong>Mobile:</strong> React Native (iOS & Android)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <h4 class="text-center">Security & Encryption</h4>
+                <div class="grid grid-4 text-center">
+                    <div>
+                        <h5>AES-256</h5>
+                        <p>Symmetric encryption</p>
+                    </div>
+                    <div>
+                        <h5>Argon2</h5>
+                        <p>Password hashing</p>
+                    </div>
+                    <div>
+                        <h5>SCRYPT</h5>
+                        <p>Key derivation</p>
+                    </div>
+                    <div>
+                        <h5>SHA-256</h5>
+                        <p>Data integrity</p>
+                    </div>
+                </div>
+                <p class="text-center mt-2">Ensures patient data privacy and compliance with CDSCO, IEC regulations</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Pilot Study Section -->
+    <section id="pilot" class="section section-dark">
+        <div class="container">
+            <h2 class="text-center mb-3">Pilot Study & Implementation Plan</h2>
+            <p class="text-center mb-3">We are conducting a comprehensive pilot study across three healthcare settings to validate our AI-powered stethoscope technology</p>
+
+            <div class="grid grid-3 text-center mb-4">
+                <div class="counter-container fade-in">
+                    <div class="counter" id="counter1">0</div>
+                    <div class="counter-label">Estimated at-risk cardiac patients in India</div>
+                </div>
+
+                <div class="counter-container fade-in">
+                    <div class="counter" id="counter2">0</div>
+                    <div class="counter-label">Target annotated auscultations during pilot</div>
+                </div>
+
+                <div class="counter-container fade-in">
+                    <div class="counter" id="counter3">₹0</div>
+                    <div class="counter-label">Target manufacturing unit cost (BOM goal)</div>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-labels">
+                    <span>Pilot Progress</span>
+                    <span id="progressPercentage">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-3 mt-4">
+                <div class="card hover-lift">
+                    <h4>Rural PHC</h4>
+                    <p>Primary Health Center serving remote communities with limited access to specialized cardiac care.</p>
+                    <ul>
+                        <li>Basic diagnostic capabilities</li>
+                        <li>Limited specialist access</li>
+                        <li>High patient volume</li>
+                    </ul>
+                    <div class="progress-container">
+                        <div class="progress-labels">
+                            <span>Implementation</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card hover-lift">
+                    <h4>District Hospital</h4>
+                    <p>Referral center with broader diagnostic capabilities but limited advanced cardiac equipment.</p>
+                    <ul>
+                        <li>Intermediate diagnostic capabilities</li>
+                        <li>Some specialist availability</li>
+                        <li>Mixed patient demographics</li>
+                    </ul>
+                    <div class="progress-container">
+                        <div class="progress-labels">
+                            <span>Implementation</span>
+                            <span>45%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card hover-lift">
+                    <h4>Mobile Health Camp</h4>
+                    <p>Temporary setups serving hardest-to-reach populations with no regular healthcare access.</p>
+                    <ul>
+                        <li>Minimal infrastructure</li>
+                        <li>Community health workers</li>
+                        <li>Screening-focused approach</li>
+                    </ul>
+                    <div class="progress-container">
+                        <div class="progress-labels">
+                            <span>Implementation</span>
+                            <span>30%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline mt-4">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Phase 1: Q1 2024</div>
+                        <h4>Device Development & Testing</h4>
+                        <p>Finalize hardware design, develop AI algorithms, and conduct initial laboratory testing.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Phase 2: Q2 2024</div>
+                        <h4>Pilot Deployment</h4>
+                        <p>Deploy devices at three pilot sites and begin data collection and annotation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Phase 3: Q3 2024</div>
+                        <h4>Model Refinement</h4>
+                        <p>Refine AI models based on pilot data and optimize performance for diverse patient populations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Phase 4: Q4 2024</div>
+                        <h4>Regulatory Approval</h4>
+                        <p>Submit for CDSCO approval and prepare for commercial launch.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="#contact" class="btn btn-accent pulse">Participate in Our Pilot Study</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-3">Business Model & Go-to-Market Strategy</h2>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>Target Market</h4>
+                    <p>AUSCSYNC targets early cardiac screening for India's large at-risk population by delivering an affordable, edge-AI stethoscope designed for frontline health workers.</p>
+                    <ul>
+                        <li>Primary Health Centers (PHCs)</li>
+                        <li>Community Health Workers</li>
+                        <li>Telemedicine Providers</li>
+                        <li>Mobile Health Initiatives</li>
+                        <li>NGOs and Public Health Programs</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Revenue Streams</h4>
+                    <ul>
+                        <li><strong>Device Sales:</strong> One-time purchase of AUSCSYNC stethoscope</li>
+                        <li><strong>Subscription Analytics:</strong> Monthly fee for advanced analytics and reporting</li>
+                        <li><strong>Teleconsultation Tier:</strong> Integrated telemedicine services</li>
+                        <li><strong>Enterprise Licensing:</strong> Bulk deployments for healthcare networks</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <h4 class="text-center">Implementation Timeline</h4>
+                <div class="grid grid-4 text-center">
+                    <div>
+                        <h5>Phase 1</h5>
+                        <p>Pilot Deployment (6 months)</p>
+                    </div>
+                    <div>
+                        <h5>Phase 2</h5>
+                        <p>Regulatory Approval (3 months)</p>
+                    </div>
+                    <div>
+                        <h5>Phase 3</h5>
+                        <p>Initial Commercial Launch (6 months)</p>
+                    </div>
+                    <div>
+                        <h5>Phase 4</h5>
+                        <p>Scale & Expansion (12 months)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Contact Section with Email Integration -->
+    <section id="contact" class="section section-dark" style="font-family: 'Arial', sans-serif; color: #333;">
+        <div class="container">
+            <h2 class="text-center mb-3" style="color: #1f2937;">Contact Us</h2>
+            <p class="text-center mb-3" style="color: #4b5563;">Interested in AUSCSYNC for your healthcare facility or want to learn more? Get in touch with our team.</p>
+
+            <div class="grid grid-2">
+                <div class="card" style="background-color: #ffffff; color: #333;">
+                    <h4 style="color: #1f2937;">Send us a Message</h4>
+                    <form id="contactForm">
+                        <div class="control-group mb-2">
+                            <label class="control-label" style="color: #374151;">Full Name *</label>
+                            <input type="text" id="contactName" required style="border-color: #d1d5db; color: #333;">
+                        </div>
+
+                        <div class="control-group mb-2">
+                            <label class="control-label" style="color: #374151;">Email Address *</label>
+                            <input type="email" id="contactEmail" required style="border-color: #d1d5db; color: #333;">
+                        </div>
+
+                        <div class="control-group mb-2">
+                            <label class="control-label" style="color: #374151;">Phone Number</label>
+                            <input type="tel" id="contactPhone" style="border-color: #d1d5db; color: #333;">
+                        </div>
+
+                        <div class="control-group mb-2">
+                            <label class="control-label" style="color: #374151;">Organization</label>
+                            <input type="text" id="contactOrg" style="border-color: #d1d5db; color: #333;">
+                        </div>
+
+                        <div class="control-group mb-2">
+                            <label class="control-label" style="color: #374151;">Interest *</label>
+                            <select id="contactInterest" required style="border-color: #d1d5db; color: #333;">
+                                <option value="">Select an option</option>
+                                <option value="general">General Information</option>
+                                <option value="pilot">Pilot Program</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="investment">Investment</option>
+                                <option value="purchase">Purchase Inquiry</option>
+                                <option value="technical">Technical Support</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group mb-2">
+                            <label class="control-label" style="color: #374151;">Message *</label>
+                            <textarea id="contactMessage" rows="5" required placeholder="Please provide details about your inquiry..." style="border-color: #d1d5db; color: #333;"></textarea>
+                        </div>
+
+                        <div class="control-group mb-2">
+                            <label class="control-label" style="color: #374151;">
+                                <input type="checkbox" id="contactConsent" required>
+                                I agree to the privacy policy and consent to being contacted by AUSCSYNC
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="submitButton">
+                            <span id="submitText">Send Message</span>
+                            <div id="submitSpinner" class="hidden">Sending...</div>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="card" style="background-color: #ffffff; color: #333;">
+                    <h4 style="color: #1f2937;">Contact Information</h4>
+                    <div class="mb-2">
+                        <h5 style="color: #1f2937;">Email</h5>
+                        <p style="color: #374151;">auscsynchealth@gmail.com</p>
+                    </div>
+
+                    <div class="mb-2">
+                        <h5 style="color: #1f2937;">Phone</h5>
+                        <p style="color: #374151;">7358085171</p>
+                    </div>
+
+                    <div class="mb-2">
+                        <h5 style="color: #1f2937;">Address</h5>
+                        <p style="color: #374151;">AUSCSYNC Healthcare Technology Innovation Centre<br>Tambaram<br>Chennai, Tamil Nadu, India</p>
+                    </div>
+
+                    <div class="mb-2">
+                        <h5 style="color: #1f2937;">Business Hours</h5>
+                        <p style="color: #374151;">Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 2:00 PM</p>
+                    </div>
+
+                    <div class="mb-2">
+                        <h5 style="color: #1f2937;">Follow Us</h5>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                            <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                            <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">AUSCSYNC</div>
+                    <p>AI-Powered Stethoscope for Precise Cardiovascular Diagnostics</p>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#product">Features</a></li>
+                        <li><a href="#technology">Technology</a></li>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#pilot">Pilot Study</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Data Security</a></li>
+                        <li><a href="#">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 AUSCSYNC. All rights reserved. | Revolutionizing Cardiac Care with AI Technology</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <span id="toastMessage">This is a toast message</span>
+        <button id="toastClose">&times;</button>
+    </div>
+
+    <!-- Modal for Patient Details -->
+    <div id="patientModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h3>Patient Record Details</h3>
+            <div id="modalContent">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Global Variables
+        let currentTheme = 'light';
+        let currentLanguage = 'en';
+        let currentPage = 1;
+        const recordsPerPage = 10;
+        let patientData = [];
+        let isPlaying = false;
+        let animationId = null;
+
+        // DOM Elements
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const languageToggle = document.getElementById('languageToggle');
+        const languageIcon = document.getElementById('languageIcon');
+        const header = document.getElementById('header');
+        const probabilitySlider = document.getElementById('probabilitySlider');
+        const probabilityValue = document.getElementById('probabilityValue');
+        const patientTableBody = document.getElementById('patientTableBody');
+        const prevPage = document.getElementById('prevPage');
+        const nextPage = document.getElementById('nextPage');
+        const pageStart = document.getElementById('pageStart');
+        const pageEnd = document.getElementById('pageEnd');
+        const totalRecords = document.getElementById('totalRecords');
+        const totalRecordings = document.getElementById('totalRecordings');
+        const abnormalDetections = document.getElementById('abnormalDetections');
+        const modelAccuracy = document.getElementById('modelAccuracy');
+        const exportCSV = document.getElementById('exportCSV');
+        const generateReport = document.getElementById('generateReport');
+        const contactForm = document.getElementById('contactForm');
+        const submitButton = document.getElementById('submitButton');
+        const submitText = document.getElementById('submitText');
+        const submitSpinner = document.getElementById('submitSpinner');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        const toastClose = document.getElementById('toastClose');
+        const patientModal = document.getElementById('patientModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalContent = document.getElementById('modalContent');
+        const waveformCanvas = document.getElementById('waveformCanvas');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const zoomInBtn = document.getElementById('zoomInBtn');
+        const zoomOutBtn = document.getElementById('zoomOutBtn');
+        const annotateBtn = document.getElementById('annotateBtn');
+        const gainSlider = document.getElementById('gainSlider');
+        const counter1 = document.getElementById('counter1');
+        const counter2 = document.getElementById('counter2');
+        const counter3 = document.getElementById('counter3');
+        const progressFill = document.getElementById('progressFill');
+        const progressPercentage = document.getElementById('progressPercentage');
+
+        // Initialize the application
+        function init() {
+            // Event Listeners
+            mobileToggle.addEventListener('click', toggleMobileMenu);
+            themeToggle.addEventListener('click', toggleTheme);
+            languageToggle.addEventListener('click', toggleLanguage);
+            probabilitySlider.addEventListener('input', updateProbabilityValue);
+            prevPage.addEventListener('click', goToPrevPage);
+            nextPage.addEventListener('click', goToNextPage);
+            exportCSV.addEventListener('click', exportToCSV);
+            generateReport.addEventListener('click', generatePDFReport);
+            contactForm.addEventListener('submit', handleContactSubmit);
+            toastClose.addEventListener('click', hideToast);
+            modalClose.addEventListener('click', closeModal);
+            playPauseBtn.addEventListener('click', togglePlayPause);
+            zoomInBtn.addEventListener('click', zoomIn);
+            zoomOutBtn.addEventListener('click', zoomOut);
+            annotateBtn.addEventListener('click', toggleAnnotation);
+            gainSlider.addEventListener('input', updateGain);
+
+            // Scroll event for header
+            window.addEventListener('scroll', handleScroll);
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === patientModal) {
+                    closeModal();
+                }
+            });
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', handleKeyboardShortcuts);
+
+            // Generate sample data
+            generateSampleData();
+
+            // Initialize charts
+            initCharts();
+
+            // Initialize waveform
+            initWaveform();
+
+            // Update dashboard
+            updateDashboard();
+
+            // Initialize counters
+            initCounters();
+
+            // Show onboarding tour for first-time visitors
+            if (!localStorage.getItem('auscsyncVisited')) {
+                setTimeout(showOnboardingTour, 1000);
+                localStorage.setItem('auscsyncVisited', 'true');
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            navMenu.classList.toggle('active');
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            if (currentTheme === 'light') {
+                document.body.classList.add('dark-mode');
+                currentTheme = 'dark';
+                themeIcon.textContent = '☀️';
+            } else {
+                document.body.classList.remove('dark-mode');
+                currentTheme = 'light';
+                themeIcon.textContent = '🌙';
+            }
+        }
+
+        // Language Toggle
+        function toggleLanguage() {
+            if (currentLanguage === 'en') {
+                currentLanguage = 'hi';
+                languageToggle.innerHTML = '<span id="languageIcon">🌐</span> HI';
+                showToast('Language changed to Hindi', 'success');
+            } else {
+                currentLanguage = 'en';
+                languageToggle.innerHTML = '<span id="languageIcon">🌐</span> EN';
+                showToast('Language changed to English', 'success');
+            }
+        }
+
+        // Update Probability Value Display
+        function updateProbabilityValue() {
+            probabilityValue.textContent = `${probabilitySlider.value}%`;
+            updateDashboard();
+        }
+
+        // Handle Scroll for Header
+        function handleScroll() {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+
+            // Update active nav link based on scroll position
+            updateActiveNavLink();
+        }
+
+        // Update Active Nav Link
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize Counters
+        function initCounters() {
+            animateCounter(counter1, 0, 54000000, 2000);
+            animateCounter(counter2, 0, 2000, 1500);
+            animateCounter(counter3, 0, 5000, 1500, '₹');
+            
+            // Animate progress bar
+            setTimeout(() => {
+                progressFill.style.width = '42%';
+                progressPercentage.textContent = '42%';
+            }, 500);
+        }
+
+        // Animate Counter
+        function animateCounter(element, start, end, duration, prefix = '') {
+            const range = end - start;
+            const increment = end > start ? 1 : -1;
+            const stepTime = Math.abs(Math.floor(duration / range));
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                element.textContent = prefix + current.toLocaleString();
+                
+                if (current === end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }
+
+        // Generate Sample Patient Data
+        function generateSampleData() {
+            const locations = ['Rural PHC', 'District Hospital', 'Mobile Camp'];
+            const diagnoses = ['Normal', 'Murmur', 'Arrhythmia', 'Extra Heart Sound'];
+            
+            for (let i = 1; i <= 50; i++) {
+                const randomLocation = locations[Math.floor(Math.random() * locations.length)];
+                const randomDiagnosis = diagnoses[Math.floor(Math.random() * diagnoses.length)];
+                const randomAge = Math.floor(Math.random() * 80) + 10;
+                const randomProbability = Math.floor(Math.random() * 30) + 70; // 70-100%
+                const randomDate = new Date();
+                randomDate.setDate(randomDate.getDate() - Math.floor(Math.random() * 30));
+                
+                patientData.push({
+                    id: `PID${i.toString().padStart(4, '0')}`,
+                    age: randomAge,
+                    location: randomLocation,
+                    diagnosis: randomDiagnosis,
+                    probability: randomProbability,
+                    date: randomDate.toISOString().split('T')[0],
+                    details: {
+                        heartRate: Math.floor(Math.random() * 40) + 60, // 60-100 bpm
+                        recordingDuration: (Math.random() * 10 + 20).toFixed(2), // 20-30 seconds
+                        signalQuality: Math.floor(Math.random() * 30) + 70, // 70-100%
+                        notes: `Sample recording from ${randomLocation}. ${randomDiagnosis.toLowerCase()} detected with ${randomProbability}% confidence.`
+                    }
+                });
+            }
+            
+            // Update patient table
+            updatePatientTable();
+        }
+
+        // Update Patient Table
+        function updatePatientTable() {
+            const startIndex = (currentPage - 1) * recordsPerPage;
+            const endIndex = startIndex + recordsPerPage;
+            const pageData = patientData.slice(startIndex, endIndex);
+            
+            patientTableBody.innerHTML = '';
+            
+            pageData.forEach(patient => {
+                const row = document.createElement('tr');
+                
+                // Determine row class based on diagnosis
+                let rowClass = '';
+                if (patient.diagnosis !== 'Normal') {
+                    rowClass = 'abnormal-row';
+                }
+                
+                row.innerHTML = `
+                    <td>${patient.id}</td>
+                    <td>${patient.age}</td>
+                    <td>${patient.location}</td>
+                    <td>${patient.diagnosis}</td>
+                    <td>${patient.probability}%</td>
+                    <td>${patient.date}</td>
+                    <td>
+                        <button class="btn btn-secondary view-details" data-id="${patient.id}">View</button>
+                    </td>
+                `;
+                
+                if (rowClass) {
+                    row.classList.add(rowClass);
+                }
+                
+                patientTableBody.appendChild(row);
+            });
+            
+            // Add event listeners to view buttons
+            document.querySelectorAll('.view-details').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const patientId = e.target.getAttribute('data-id');
+                    showPatientDetails(patientId);
+                });
+            });
+            
+            // Update pagination info
+            pageStart.textContent = startIndex + 1;
+            pageEnd.textContent = Math.min(endIndex, patientData.length);
+            totalRecords.textContent = patientData.length;
+            
+            // Update button states
+            prevPage.disabled = currentPage === 1;
+            nextPage.disabled = endIndex >= patientData.length;
+        }
+
+        // Go to Previous Page
+        function goToPrevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                updatePatientTable();
+            }
+        }
+
+        // Go to Next Page
+        function goToNextPage() {
+            if (currentPage * recordsPerPage < patientData.length) {
+                currentPage++;
+                updatePatientTable();
+            }
+        }
+
+        // Show Patient Details in Modal
+        function showPatientDetails(patientId) {
+            const patient = patientData.find(p => p.id === patientId);
+            
+            if (patient) {
+                modalContent.innerHTML = `
+                    <div class="grid grid-2 mb-2">
+                        <div>
+                            <h5>Patient ID</h5>
+                            <p>${patient.id}</p>
+                        </div>
+                        <div>
+                            <h5>Age</h5>
+                            <p>${patient.age}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-2 mb-2">
+                        <div>
+                            <h5>Location</h5>
+                            <p>${patient.location}</p>
+                        </div>
+                        <div>
+                            <h5>Date</h5>
+                            <p>${patient.date}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-2">
+                        <h5>Diagnosis</h5>
+                        <p>${patient.diagnosis} (${patient.probability}% confidence)</p>
+                    </div>
+                    
+                    <div class="grid grid-3 mb-2">
+                        <div>
+                            <h5>Heart Rate</h5>
+                            <p>${patient.details.heartRate} BPM</p>
+                        </div>
+                        <div>
+                            <h5>Duration</h5>
+                            <p>${patient.details.recordingDuration}s</p>
+                        </div>
+                        <div>
+                            <h5>Signal Quality</h5>
+                            <p>${patient.details.signalQuality}%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-2">
+                        <h5>Clinical Notes</h5>
+                        <p>${patient.details.notes}</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-primary" onclick="generatePatientReport('${patient.id}')">Generate Report</button>
+                    </div>
+                `;
+                
+                patientModal.style.display = 'flex';
+            }
+        }
+
+        // Close Modal
+        function closeModal() {
+            patientModal.style.display = 'none';
+        }
+
+        // Update Dashboard Metrics
+        function updateDashboard() {
+            const threshold = parseInt(probabilitySlider.value);
+            
+            // Filter data based on threshold
+            const filteredData = patientData.filter(patient => patient.probability >= threshold);
+            const abnormalData = filteredData.filter(patient => patient.diagnosis !== 'Normal');
+            
+            // Update metrics
+            totalRecordings.textContent = filteredData.length.toLocaleString();
+            abnormalDetections.textContent = abnormalData.length.toLocaleString();
+            
+            // Calculate accuracy (mock)
+            const accuracy = 90 + Math.random() * 8; // 90-98%
+            modelAccuracy.textContent = accuracy.toFixed(1) + '%';
+        }
+
+        // Export to CSV
+        function exportToCSV() {
+            const headers = ['Patient ID', 'Age', 'Location', 'Diagnosis', 'Probability', 'Date'];
+            const csvContent = [
+                headers.join(','),
+                ...patientData.map(patient => [
+                    patient.id,
+                    patient.age,
+                    patient.location,
+                    patient.diagnosis,
+                    patient.probability,
+                    patient.date
+                ].join(','))
+            ].join('\n');
+            
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'auscsync_patient_data.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showToast('CSV exported successfully', 'success');
+        }
+
+        // Generate PDF Report
+        function generatePDFReport() {
+            // In a real implementation, this would use jsPDF
+            // For now, we'll simulate the process
+            showToast('PDF report generation started', 'success');
+            
+            setTimeout(() => {
+                showToast('PDF report generated successfully', 'success');
+                
+                // Simulate download
+                const a = document.createElement('a');
+                a.href = '#';
+                a.download = 'auscsync_clinical_report.pdf';
+                a.click();
+            }, 2000);
+        }
+
+        // Generate Patient Report
+        function generatePatientReport(patientId) {
+            showToast(`Generating report for ${patientId}`, 'success');
+            
+            setTimeout(() => {
+                showToast(`Report for ${patientId} generated successfully`, 'success');
+                
+                // Simulate download
+                const a = document.createElement('a');
+                a.href = '#';
+                a.download = `auscsync_report_${patientId}.pdf`;
+                a.click();
+                
+                closeModal();
+            }, 1500);
+        }
+
+        // Handle Contact Form Submission with Email Integration
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const phone = document.getElementById('contactPhone').value;
+            const organization = document.getElementById('contactOrg').value;
+            const interest = document.getElementById('contactInterest').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            // Show loading state
+            submitText.classList.add('hidden');
+            submitSpinner.classList.remove('hidden');
+            submitButton.disabled = true;
+            
+            // Send email using EmailJS
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                name: name,
+                email: email,
+                phone: phone,
+                organization: organization,
+                interest: interest,
+                message: message
+            }).then(function(response) {
+                showToast(`Thank you ${name}! Your message has been sent successfully. We'll contact you at ${email} soon.`, 'success');
+                contactForm.reset();
+            }, function(error) {
+                showToast('Failed to send message. Please try again.', 'error');
+            }).finally(() => {
+                submitText.classList.remove('hidden');
+                submitSpinner.classList.add('hidden');
+                submitButton.disabled = false;
+            });
+        }
+
+        // Show Toast Notification
+        function showToast(message, type = 'success') {
+            toastMessage.textContent = message;
+            toast.className = 'toast';
+            toast.classList.add('show');
+            
+            if (type === 'success') {
+                toast.classList.add('toast-success');
+            } else if (type === 'error') {
+                toast.classList.add('toast-error');
+            }
+            
+            // Auto hide after 5 seconds
+            setTimeout(hideToast, 5000);
+        }
+
+        // Hide Toast
+        function hideToast() {
+            toast.classList.remove('show');
+        }
+
+        // Initialize Charts
+        function initCharts() {
+            // Diagnosis Distribution Chart
+            const diagnosisCtx = document.getElementById('diagnosisChart').getContext('2d');
+            
+            // Mock data for diagnosis distribution
+            const diagnosisData = {
+                labels: ['Normal', 'Murmur', 'Arrhythmia', 'Extra Heart Sound'],
+                datasets: [{
+                    label: 'Diagnosis Distribution',
+                    data: [65, 15, 12, 8],
+                    backgroundColor: [
+                        'rgba(16, 185, 129, 0.7)',
+                        'rgba(239, 68, 68, 0.7)',
+                        'rgba(245, 158, 11, 0.7)',
+                        'rgba(59, 130, 246, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgb(16, 185, 129)',
+                        'rgb(239, 68, 68)',
+                        'rgb(245, 158, 11)',
+                        'rgb(59, 130, 246)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+            
+            // In a real implementation, we would use Chart.js
+            // For now, we'll create a simple canvas visualization
+            drawBarChart(diagnosisCtx, diagnosisData);
+            
+            // Trend Chart
+            const trendCtx = document.getElementById('trendChart').getContext('2d');
+            
+            // Mock data for trends
+            const trendData = {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Normal Diagnoses',
+                    data: [45, 52, 48, 55, 58, 62],
+                    borderColor: 'rgb(16, 185, 129)',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: 'Abnormal Diagnoses',
+                    data: [8, 12, 10, 15, 14, 18],
+                    borderColor: 'rgb(239, 68, 68)',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            };
+            
+            drawLineChart(trendCtx, trendData);
+        }
+
+        // Draw Simple Bar Chart (Fallback if Chart.js not available)
+        function drawBarChart(ctx, data) {
+            const width = ctx.canvas.width;
+            const height = ctx.canvas.height;
+            const barWidth = width / data.labels.length * 0.7;
+            const maxValue = Math.max(...data.datasets[0].data);
+            const padding = 20;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw bars
+            data.labels.forEach((label, i) => {
+                const value = data.datasets[0].data[i];
+                const barHeight = (value / maxValue) * (height - padding * 2);
+                const x = i * (width / data.labels.length) + (width / data.labels.length - barWidth) / 2;
+                const y = height - barHeight - padding;
+                
+                ctx.fillStyle = data.datasets[0].backgroundColor[i];
+                ctx.fillRect(x, y, barWidth, barHeight);
+                
+                // Draw value on top
+                ctx.fillStyle = 'var(--text)';
+                ctx.font = '12px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(value, x + barWidth / 2, y - 5);
+                
+                // Draw label
+                ctx.fillText(label, x + barWidth / 2, height - 5);
+            });
+        }
+
+        // Draw Simple Line Chart (Fallback if Chart.js not available)
+        function drawLineChart(ctx, data) {
+            const width = ctx.canvas.width;
+            const height = ctx.canvas.height;
+            const padding = 30;
+            const chartWidth = width - padding * 2;
+            const chartHeight = height - padding * 2;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw each dataset
+            data.datasets.forEach(dataset => {
+                ctx.beginPath();
+                ctx.strokeStyle = dataset.borderColor;
+                ctx.lineWidth = 2;
+                
+                // Calculate points
+                const points = dataset.data.map((value, i) => {
+                    const x = padding + (i / (data.labels.length - 1)) * chartWidth;
+                    const y = height - padding - (value / Math.max(...dataset.data)) * chartHeight;
+                    return { x, y };
+                });
+                
+                // Draw line
+                ctx.moveTo(points[0].x, points[0].y);
+                for (let i = 1; i < points.length; i++) {
+                    ctx.lineTo(points[i].x, points[i].y);
+                }
+                ctx.stroke();
+                
+                // Draw points
+                points.forEach(point => {
+                    ctx.beginPath();
+                    ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
+                    ctx.fillStyle = dataset.borderColor;
+                    ctx.fill();
+                });
+                
+                // Draw labels
+                ctx.fillStyle = 'var(--text)';
+                ctx.font = '12px Arial';
+                ctx.textAlign = 'center';
+                data.labels.forEach((label, i) => {
+                    ctx.fillText(label, padding + (i / (data.labels.length - 1)) * chartWidth, height - 10);
+                });
+            });
+        }
+
+        // Initialize Waveform
+        function initWaveform() {
+            const ctx = waveformCanvas.getContext('2d');
+            const width = waveformCanvas.width;
+            const height = waveformCanvas.height;
+            
+            // Draw initial placeholder
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, width, height);
+            
+            ctx.strokeStyle = '#0f0';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            
+            // Draw a simple sine wave as placeholder
+            for (let x = 0; x < width; x++) {
+                const y = height / 2 + Math.sin(x / 20) * 30;
+                if (x === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            
+            ctx.stroke();
+            
+            // Add grid lines
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 0.5;
+            
+            // Horizontal lines
+            for (let y = 0; y < height; y += height / 4) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+            
+            // Vertical lines
+            for (let x = 0; x < width; x += width / 10) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, height);
+                ctx.stroke();
+            }
+        }
+
+        // Toggle Play/Pause for Waveform
+        function togglePlayPause() {
+            isPlaying = !isPlaying;
+            
+            if (isPlaying) {
+                playPauseBtn.textContent = '⏸ Pause';
+                animateWaveform();
+            } else {
+                playPauseBtn.textContent = '▶ Play';
+                cancelAnimationFrame(animationId);
+            }
+        }
+
+        // Animate Waveform
+        function animateWaveform() {
+            const ctx = waveformCanvas.getContext('2d');
+            const width = waveformCanvas.width;
+            const height = waveformCanvas.height;
+            
+            // Clear canvas
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, width, height);
+            
+            // Draw grid
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 0.5;
+            
+            // Horizontal lines
+            for (let y = 0; y < height; y += height / 4) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+            
+            // Vertical lines
+            for (let x = 0; x < width; x += width / 10) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, height);
+                ctx.stroke();
+            }
+            
+            // Draw animated waveform
+            ctx.strokeStyle = '#0f0';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            
+            const time = Date.now() / 1000;
+            const gain = parseInt(gainSlider.value) / 50;
+            
+            for (let x = 0; x < width; x++) {
+                // Complex waveform with multiple frequencies
+                const t = (x / width) * 10 + time;
+                const y = height / 2 + 
+                    Math.sin(t * 5) * 20 * gain + 
+                    Math.sin(t * 13) * 10 * gain + 
+                    Math.sin(t * 27) * 5 * gain;
+                
+                if (x === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            
+            ctx.stroke();
+            
+            if (isPlaying) {
+                animationId = requestAnimationFrame(animateWaveform);
+            }
+        }
+
+        // Zoom In
+        function zoomIn() {
+            showToast('Zoom level increased', 'success');
+            // In a real implementation, this would adjust the waveform scale
+        }
+
+        // Zoom Out
+        function zoomOut() {
+            showToast('Zoom level decreased', 'success');
+            // In a real implementation, this would adjust the waveform scale
+        }
+
+        // Toggle Annotation
+        function toggleAnnotation() {
+            const isAnnotating = annotateBtn.classList.toggle('active');
+            
+            if (isAnnotating) {
+                annotateBtn.textContent = 'Stop Annotating';
+                showToast('Annotation mode enabled. Click on the waveform to add annotations.', 'success');
+            } else {
+                annotateBtn.textContent = 'Annotate';
+                showToast('Annotation mode disabled', 'success');
+            }
+        }
+
+        // Update Gain
+        function updateGain() {
+            if (isPlaying) {
+                // Restart animation with new gain
+                cancelAnimationFrame(animationId);
+                animateWaveform();
+            }
+        }
+
+        // Load Sample Waveform
+        function loadSample(type) {
+            showToast(`Loading ${type} heart sound sample`, 'success');
+            
+            // In a real implementation, this would load actual audio data
+            // For now, we'll just update the waveform visualization
+            
+            if (isPlaying) {
+                togglePlayPause(); // Stop current playback
+            }
+            
+            setTimeout(() => {
+                togglePlayPause(); // Start playing the sample
+            }, 500);
+        }
+
+        // Handle Keyboard Shortcuts
+        function handleKeyboardShortcuts(e) {
+            // Only trigger if not in an input field
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                return;
+            }
+            
+            switch(e.key) {
+                case '/':
+                    e.preventDefault();
+                    // Focus search (if implemented)
+                    showToast('Press "d" for dark mode, "Esc" to close modals', 'success');
+                    break;
+                case 'd':
+                case 'D':
+                    if (e.ctrlKey || e.metaKey) {
+                        // Allow browser shortcuts
+                        return;
+                    }
+                    e.preventDefault();
+                    toggleTheme();
+                    break;
+                case 'Escape':
+                    closeModal();
+                    hideToast();
+                    break;
+            }
+        }
+
+        // Show Onboarding Tour
+        function showOnboardingTour() {
+            showToast('Welcome to AUSCSYNC! Use "/" for keyboard shortcuts.', 'success');
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
