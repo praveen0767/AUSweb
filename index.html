@@ -357,6 +357,106 @@
             color: white;
         }
 
+        .hero-gallery {
+            flex: 1;
+            max-width: 60%;
+            position: relative;
+        }
+
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-slider {
+            display: flex;
+            width: 500%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-slide {
+            width: 20%;
+            height: 100%;
+            position: relative;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-slide:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2;
+            font-size: 1.2rem;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .gallery-prev {
+            left: 1rem;
+        }
+
+        .gallery-next {
+            right: 1rem;
+        }
+
+        .gallery-dots {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .gallery-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-dot.active {
+            background: white;
+        }
+
         .hero-badge {
             display: inline-block;
             background: rgba(37, 99, 235, 0.1);
@@ -955,6 +1055,7 @@
                 <li><a href="#product" class="nav-link">Product</a></li>
                 <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
                 <li><a href="#technology" class="nav-link">Technology</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
                 <li><a href="#pilot" class="nav-link">Pilot Study</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -977,11 +1078,70 @@
                 <span class="hero-badge">AI-Powered Cardiovascular Diagnostics</span>
                 <h1>Revolutionizing Heart Health with Intelligent Stethoscope Technology</h1>
                 <p class="text-lg">AUSCSYNC delivers precise, real-time cardiac diagnostics through advanced AI, making early detection accessible in rural and primary healthcare settings across India.</p>
-                
+
                 <div class="hero-actions">
                     <a href="#product" class="btn btn-primary">Explore Product</a>
                     <a href="#dashboard" class="btn btn-secondary">View Demo Dashboard</a>
                     <a href="#contact" class="btn btn-accent">Schedule Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="text-center mb-3">AUSCSYNC Gallery</h2>
+            <p class="text-center text-light mb-3">Showcasing our journey and innovations in AI-powered cardiac diagnostics</p>
+
+            <div class="gallery-container">
+                <div class="gallery-slider" id="gallerySlider">
+                    <div class="gallery-slide">
+                        <img src="image.png" alt="AUSCSYNC Device Prototype" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h4>Device Prototype</h4>
+                            <p>Early prototype of our AI-powered stethoscope with edge computing capabilities</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="https://via.placeholder.com/800x500/2563eb/ffffff?text=AUSCSYNC+Team" alt="AUSCSYNC Team" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h4>Our Team</h4>
+                            <p>Dedicated engineers and healthcare professionals working together</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="https://via.placeholder.com/800x500/10b981/ffffff?text=Rural+Healthcare+Demo" alt="Rural Healthcare Demo" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h4>Rural Healthcare Demo</h4>
+                            <p>Field testing in rural primary health centers across India</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="https://via.placeholder.com/800x500/f59e0b/ffffff?text=AI+Processing+Unit" alt="AI Processing Unit" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h4>AI Processing Unit</h4>
+                            <p>Advanced edge AI chip enabling real-time cardiac analysis</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="https://via.placeholder.com/800x500/ef4444/ffffff?text=Pilot+Study+Launch" alt="Pilot Study Launch" class="gallery-image">
+                        <div class="gallery-caption">
+                            <h4>Pilot Study Launch</h4>
+                            <p>Launching comprehensive pilot studies in three healthcare settings</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="gallery-nav gallery-prev" id="galleryPrev" aria-label="Previous image">❮</button>
+                <button class="gallery-nav gallery-next" id="galleryNext" aria-label="Next image">❯</button>
+
+                <div class="gallery-dots" id="galleryDots">
+                    <span class="gallery-dot active" data-slide="0"></span>
+                    <span class="gallery-dot" data-slide="1"></span>
+                    <span class="gallery-dot" data-slide="2"></span>
+                    <span class="gallery-dot" data-slide="3"></span>
+                    <span class="gallery-dot" data-slide="4"></span>
                 </div>
             </div>
         </div>
@@ -1147,43 +1307,9 @@
                     <canvas id="trendChart"></canvas>
                 </div>
                 
-                <h4>Recent Patient Records</h4>
-                <div class="table-responsive">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Patient ID</th>
-                                <th>Age</th>
-                                <th>Location</th>
-                                <th>Diagnosis</th>
-                                <th>Probability</th>
-                                <th>Date</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="patientTableBody">
-                            <!-- Data will be populated by JavaScript -->
-                        </tbody>
-                    </table>
-                </div>
+
                 
-                <div class="pagination">
-                    <div>Showing <span id="pageStart">1</span>-<span id="pageEnd">10</span> of <span id="totalRecords">50</span> records</div>
-                    <div class="pagination-controls">
-                        <button class="page-btn" id="prevPage">Previous</button>
-                        <button class="page-btn active">1</button>
-                        <button class="page-btn">2</button>
-                        <button class="page-btn">3</button>
-                        <button class="page-btn">4</button>
-                        <button class="page-btn">5</button>
-                        <button class="page-btn" id="nextPage">Next</button>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-3">
-                    <button id="exportCSV" class="btn btn-secondary">Export CSV</button>
-                    <button id="generateReport" class="btn btn-primary">Generate Report</button>
-                </div>
+
             </div>
         </div>
     </section>
@@ -1286,7 +1412,7 @@
             <div class="grid grid-3 text-center mb-4">
                 <div class="counter-container fade-in">
                     <div class="counter" id="counter1">0</div>
-                    <div class="counter-label">Estimated at-risk cardiac patients in India</div>
+                    <div class="counter-label">Estimated at-risk cardiac patients in India WE PROTECT THEM</div>
                 </div>
 
                 <div class="counter-container fade-in">
@@ -1630,6 +1756,8 @@
         let patientData = [];
         let isPlaying = false;
         let animationId = null;
+        let currentSlide = 0;
+        const totalSlides = 5;
 
         // DOM Elements
         const mobileToggle = document.getElementById('mobileToggle');
@@ -1711,10 +1839,17 @@
                 }
             });
 
-            // Keyboard shortcuts
-            document.addEventListener('keydown', handleKeyboardShortcuts);
+        // Keyboard shortcuts
+        document.addEventListener('keydown', handleKeyboardShortcuts);
 
-            // Generate sample data
+        // Gallery navigation
+        galleryPrev.addEventListener('click', prevSlide);
+        galleryNext.addEventListener('click', nextSlide);
+        document.querySelectorAll('.gallery-dot').forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+
+        // Generate sample data
             generateSampleData();
 
             // Initialize charts
